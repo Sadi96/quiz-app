@@ -1,104 +1,4 @@
 // BAZA PYTAŃ
-// const quizData = [
-//     {
-//         question: 'Sport wodny uprawiany na desce z żaglem to',
-//         answers: ['Skateboard', 'Surfing', 'Windsurfing', 'Bojery'],
-//         correctAnswer: 'Windsurfing'
-//     }, {
-//         question: 'Urządzenie służące do nagrywania i odtwarzania wiadomości w telefonie komórkowym to',
-//         answers: ["Toner", "Faks", "Poczta głosowa", "Poczta elektroniczna"],
-//         correctAnswer: 'Poczta głosowa'
-//     }, {
-//         question: 'Powłoka na naczyniach kuchennych zapobiegająca przywieraniu potraw to',
-//         answers: ["poliester", "teflon", "akryl", "winyl"],
-//         correctAnswer: 'teflon'
-//     }, {
-//         question: 'Bohaterem jakiej powieści Henryka Sienkiewicza jest Jurand ze Spychowa?',
-//         answers: ["„W pustyni i w puszczy”","„Quo Vadis”", "„Potop”", "„Krzyżacy”"],
-//         correctAnswer: '„Krzyżacy”'
-//     }, {
-//         question: 'Napój Anglików pijany tradycyjnie o piątej po południu to',
-//         answers: ["oranżada", "kakao", "herbata", "whisky"],
-//         correctAnswer: 'herbata'
-//     }, {
-//         question: 'Wywar rosołowy to',
-//         answers: [ "bulion",
-//         "żur",
-//         "wassersuppe",
-//         "bulion Ureya"],
-//         correctAnswer: 'bulion'
-//     }, {
-//         question: 'Daszek z wyciągiem umieszczony nad kuchnią, służący do usuwania zapachów na zewnątrz to',
-//         answers: ["lufcik",
-//         "wywietrznik",
-//         "okap",
-//         "szyber"],
-//         correctAnswer: 'okap'
-//     }, {
-//         question: 'Jakie urządzenie służy do wykrywania, zapisywania i badania trzęsień ziemi?',
-//         answers: ["polarymetr",
-//         "aerograf",
-//         "spektrometr",
-//         "sejsmograf"],
-//         correctAnswer: 'sejsmograf'
-//     }, {
-//         question: 'Kto był gospodarzem Mistrzostw Europy w piłce nożnej w 2000 roku ?',
-//         answers: [ "Francja",
-//         "Włochy",
-//         "Holandia i Belgia",
-//         "Niemcy"],
-//         correctAnswer: 'Holandia i Belgia'
-//     }, {
-//         question: 'Twórcą jakiego imperium był Czyngis-chan?',
-//         answers: ["japońskiego",
-//         "chińskiego",
-//         "tatarskiego",
-//         "mongolskiego"],
-//         correctAnswer: 'mongolskiego'
-//     }, {
-//         question: 'Pulchne placki drożdżowe smażone na oleju to:',
-//         answers: ["knedle",
-//         "naleśniki",
-//         "racuchy",
-//         "podpłomyki"],
-//         correctAnswer: 'racuchy'
-//     }, {
-//         question: 'Który z wymienionych metali wykorzystywany jest w termometrach?',
-//         answers: ["rubid ",
-//         "rod ",
-//         "rtęć",
-//         "ruten "],
-//         correctAnswer: 'rtęć'
-//     }, {
-//         question: 'Statek wodny, na którego pokładzie mogą startować i lądować samoloty to',
-//         answers: ["tankowiec ",
-//         "krążownik ",
-//         "niszczyciel ",
-//         "lotniskowiec"],
-//         correctAnswer: 'lotniskowiec'
-//     }, {
-//         question: 'Czworokąt, którego wszystkie boki są równe oraz wszystkie kąty proste to:',
-//         answers: [ "prostokąt ",
-//         "kwadrat",
-//         "romb ",
-//         "trapez "],
-//         correctAnswer: 'kwadrat'
-//     }, {
-//         question: 'Gorące źródło wyrzucające w regularnych odstępach czasu wodę i parę wodną to',
-//         answers: ["wulkan",
-//         "gejzer",
-//         "bojler",
-//         "źródło artezyjskie"],
-//         correctAnswer: 'gejzer'
-//     }, {
-//         question: 'Uszy którego ze zwierząt w gwarze myśliwskiej nazywane są „słuchami”?',
-//         answers: ["tarpana",
-//         "żaby",
-//         "sarny",
-//         "zająca"],
-//         correctAnswer: 'zająca'
-//     }
-// ]
 let quizData;
 fetch('quiz-data.json')
 .then(res => res.json())
@@ -108,6 +8,7 @@ fetch('quiz-data.json')
 .catch(err => console.error(err));
 
 // ZMIENNE DOM
+const quizAppBox = document.getElementById('quiz-app');
 const correctAnswersSpan = document.getElementById('correct-counter');
 const wrongAnswersSpan = document.getElementById('wrong-counter');
 const minutesCounter = document.getElementById('minutes');
@@ -118,6 +19,9 @@ const questionParagraph = document.getElementById('question');
 const answerBoxes = [...document.querySelectorAll('.answer-box')];
 const answerSpans = document.querySelectorAll('span.answer');
 const button = document.querySelector('#button button');
+const messageBox = document.getElementById('message-box-wrapper');
+const messageParagraph = document.getElementById('message-paragraph');
+const messageButton = document.getElementById('message-button');
 
 // ZMIENNE PRZECHOWUJĄCE DANE GRY
 let allQuestionsInGame = 10;
@@ -230,16 +134,30 @@ function chooseAnswer() {
     button.textContent = 'Zatwierdź';
 }
 
+function hideMessage() {
+    quizAppBox.classList.remove('blurred');
+    messageBox.classList.remove('visible');
+    messageParagraph.textContent = '';
+    messageButton.removeEventListener('click', hideMessage);
+}
+
+function displayMessage(message) {
+    quizAppBox.classList.add('blurred');
+    messageBox.classList.add('visible');
+    messageParagraph.textContent = message;
+    messageButton.addEventListener('click', hideMessage);
+}
+
 function sendAnswer(quizData) {
     let choosenAnswer = answerBoxes.filter(box => box.classList.contains('checked'));
         if(!choosenAnswer.length) {
-            return alert('Najpierw zaznacz odpowiedź');
+            return displayMessage('Najpierw zaznacz odpowiedź');
         } else if (choosenAnswer[0].querySelector('.answer').textContent === quizData.correctAnswer) {
-            alert(`${choosenAnswer[0].querySelector('.answer').textContent} to dobra odpowiedź!`);
+            displayMessage(`${choosenAnswer[0].querySelector('.answer').textContent} to dobra odpowiedź!`);
             correctAnswersCounter++;
             displayCurrentCounters();
         } else if (choosenAnswer[0].querySelector('.answer').textContent !== quizData.correctAnswer) {
-            alert(`${choosenAnswer[0].querySelector('.answer').textContent} to nieprawidłowa odpowiedź!`)
+            displayMessage(`${choosenAnswer[0].querySelector('.answer').textContent} to nieprawidłowa odpowiedź!`)
             wrongAnswersCounter++;
             displayCurrentCounters();
         }

@@ -13,12 +13,17 @@ body {
 }
 
 #quiz-app {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     background-color: #ffffff;
     background-image: url(Subtle-Prism.svg);
     background-attachment: fixed;
     background-size: cover;
+}
+
+#quiz-app.blurred {
+    filter: blur(0.3rem);
 }
 
 header {
@@ -75,7 +80,8 @@ span.result-info-span {
 
 }
 
-p#question {
+p#question,
+#message-paragraph {
     font-size: 1.3rem;
     color: #1a1a1a;
     margin: 0.3rem auto;
@@ -108,7 +114,8 @@ span.answer-letter {
     width: 1.5rem;
 }
 
-#button button {
+#button button,
+#message-button {
     display: block;
     background-color: #fff;
     padding: 1rem;
@@ -124,12 +131,49 @@ span.answer-letter {
     cursor: pointer;
 }
 
-#button button:hover {
+#button button:hover,
+#message-button:hover {
     background-color: #0076aa;
     color: #ffffff;
 }
 
+#message-box-wrapper {
+    display: none;
+}
+
+#message-box-wrapper.visible {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#message-box-wrapper.visible #message-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: 30%;
+    background-color: #fff;
+    border: 1px solid #0076aa;
+    border-radius: 0.2rem;
+    padding: 2rem 1rem;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
+    text-align: center;
+}
+
 /* MEDIA QUERIES */
+@media (max-height: 480px) and (orientation: landscape) {
+    #message-box-wrapper.visible #message-box {
+        width: 70%;
+        height: 50%;
+    }
+}
+
 @media (max-width: 360px) {
     html {
         font-size: 14px;
@@ -177,6 +221,12 @@ span.answer-letter {
     #button button {
         width: 40%;
     }
+
+    #message-box-wrapper.visible #message-box {
+        width: 45%;
+        height: 40%;
+        padding: 3rem 2rem;
+    }
 }
 
 @media (min-width: 1500px) {
@@ -203,6 +253,12 @@ span.answer-letter {
     #button button {
         width: 40%;
     }
+
+    #message-box-wrapper.visible #message-box {
+        width: 45%;
+        height: 30%;
+        padding: 3rem 2rem;
+    }
 }
 
 @media (max-height: 600px) {
@@ -219,5 +275,10 @@ span.answer-letter {
         margin: 1rem auto;
         border-radius: 0.2rem;
         padding: 1rem;
+    }
+
+    #message-box-wrapper.visible #message-box {
+        height: 200px;
+        border-radius: 0.2rem;
     }
 }

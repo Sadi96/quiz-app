@@ -410,7 +410,7 @@
      {
         "question":"Ile wysokości ma stożek? ",
         "answers":[
-           "'jedną'",
+           "jedną",
            "dwie",
            "trzy",
            "cztery"
@@ -876,6 +876,286 @@
            "Dzieci z Bullerbyn"
         ],
         "correctAnswer":"Akademia Pana Kleksa"
-     }
+     },
+     {
+      "question":"Ile kadłubów ma katamaran? ",
+      "answers":[
+         "jeden",
+         "dwa",
+         "trzy",
+         "cztery"
+      ],
+      "correctAnswer":"dwa"
+   },
+   {
+      "question":"Jaki płacz oznaczają „krokodyle łzy”? ",
+      "answers":[
+         "szczery",
+         "dyskretny",
+         "histeryczny",
+         "nieszczery"
+      ],
+      "correctAnswer":"nieszczery"
+   },
+   {
+      "question":"Ku czci jakiej bogini wzniesiono Partenon na Akropolu ateńskim? ",
+      "answers":[
+         "Ateny",
+         "Artemidy",
+         "Demeter",
+         "Hery"
+      ],
+      "correctAnswer":"Ateny"
+   },
+   {
+      "question":"Nauczyciel języka obcego na wyższej uczelni to: ",
+      "answers":[
+         "adiunkt",
+         "lektor",
+         "dziekan",
+         "docent"
+      ],
+      "correctAnswer":"lektor"
+   },
+   {
+      "question":"Wirtuozem gry na jakim instrumencie był Niccolo Paganini? ",
+      "answers":[
+         "na waltorni",
+         "na skrzypcach",
+         "na fortepianie",
+         "na harfie"
+      ],
+      "correctAnswer":"na skrzypcach"
+   },
+   {
+      "question":"Legendarny stwór o ciele uskrzydlonego lwa, głowie i szponach orła to: ",
+      "answers":[
+         "Gryf",
+         "Sfinks",
+         "Centaur",
+         "Minotaur"
+      ],
+      "correctAnswer":"Gryf"
+   },
+   {
+      "question":"Jak nazywa się znak w notacji muzycznej obniżający dźwięk o pół tonu? ",
+      "answers":[
+         "synkopa",
+         "krzyżyk",
+         "bemol",
+         "fermata"
+      ],
+      "correctAnswer":"bemol"
+   },
+   {
+      "question":"Piana z białek rozbita z cukrem i zapieczona w słodkie, białe ciastko to: ",
+      "answers":[
+         "makagigi",
+         "strudel",
+         "ptyś",
+         "beza"
+      ],
+      "correctAnswer":"beza"
+   },
+   {
+      "question":"Bez której z wymienionych przypraw nie może się obejść grzane wino? ",
+      "answers":[
+         "bez chili",
+         "bez cynamonu",
+         "bez piołunu",
+         "bez curry"
+      ],
+      "correctAnswer":"bez cynamonu"
+   },
+   {
+      "question":"Które z podanych spodni są najdłuższe? ",
+      "answers":[
+         "dzwony",
+         "szorty",
+         "pludry",
+         "bermudy"
+      ],
+      "correctAnswer":"dzwony"
+   },
+   {
+      "question":"Które z podanych miast leży nad Dunajem? ",
+      "answers":[
+         "Nowy Targ",
+         "Nowy Sad",
+         "Nowy Sącz",
+         "Nowy Staw"
+      ],
+      "correctAnswer":"Nowy Sad"
+   },
+   {
+      "question":"Szkarlatyna to inaczej: ",
+      "answers":[
+         "koklusz",
+         "grypa",
+         "płonica",
+         "malaria"
+      ],
+      "correctAnswer":"płonica"
+   },
+   {
+      "question":"Czego nie produkują pszczoły? ",
+      "answers":[
+         "mleczka",
+         "kitu",
+         "wosku",
+         "nektaru"
+      ],
+      "correctAnswer":"nektaru"
+   },
+   {
+      "question":"Kto porwał Piękną Helenę w utworze Homera pt. „Iliada”? ",
+      "answers":[
+         "Agamemnon",
+         "Achilles",
+         "Parys",
+         "Hektor"
+      ],
+      "correctAnswer":"Parys"
+   },
+   {
+      "question":"Kim był Louis Armstrong? ",
+      "answers":[
+         "trębaczem jazzowym",
+         "astronautą",
+         "pisarzem",
+         "konstruktorem"
+      ],
+      "correctAnswer":"trębaczem jazzowym"
+   },
+   {
+      "question":"Jakie zwierzęta wyposażone są w kądziołki? ",
+      "answers":[
+         "nietoperze",
+         "kameleony",
+         "modliszki",
+         "pająki"
+      ],
+      "correctAnswer":"pająki"
+   },
+   {
+      "question":"Co nie jest ogrodzeniem? ",
+      "answers":[
+         "ostrokół",
+         "palisada",
+         "zarzuela",
+         "zeriba"
+      ],
+      "correctAnswer":"zarzuela"
+   },
+   {
+      "question":"Od końca XIX wieku kwintal liczył: ",
+      "answers":[
+         "10 kg",
+         "100 kg",
+         "150 kg",
+         "200 kg"
+      ],
+      "correctAnswer":"100 kg"
+   },
+   {
+      "question":"Co przypomina odgłos wydawany przez hienę? ",
+      "answers":[
+         "mlaskanie",
+         "chichot",
+         "mruczenie",
+         "sapanie"
+      ],
+      "correctAnswer":"chichot"
+   },
+   {
+      "question":"Powiedzenie „dziesiąta woda po kisielu” oznacza: ",
+      "answers":[
+         "mdły smak",
+         "coś bardzo rzadkiego",
+         "odległe pokrewieństwo",
+         "coś niesmacznego"
+      ],
+      "correctAnswer":"odległe pokrewieństwo"
+   },
+   {
+      "question":"Ile „ramion” ma ośmiornica? ",
+      "answers":[
+         "trzy",
+         "pięć",
+         "osiem",
+         "dwanaście"
+      ],
+      "correctAnswer":"osiem"
+   },
+   {
+      "question":"W jakiej dyscyplinie sportowej Artur Partyka zdobył tytuł mistrza Europy w 1998 roku? ",
+      "answers":[
+         "w skoku w wzwyż",
+         "w pchnięciu kulą",
+         "w żeglarstwie",
+         "w judo"
+      ],
+      "correctAnswer":"w skoku w wzwyż"
+   },
+   {
+      "question":"Z jakim ssakiem spokrewniony jest bizon? ",
+      "answers":[
+         "z jeleniem",
+         "z łosiem",
+         "z sarną",
+         "z żubrem"
+      ],
+      "correctAnswer":"z żubrem"
+   },
+   {
+      "question":"Jakiego koloru jest łódź podwodna w piosence zespołu The Beatles? ",
+      "answers":[
+         "białego",
+         "czarnego",
+         "żółtego",
+         "niebieskiego"
+      ],
+      "correctAnswer":"żółtego"
+   },
+   {
+      "question":"W jakim mieście znajduje się Ściana Płaczu? ",
+      "answers":[
+         "w Rzymie",
+         "w Pekinie",
+         "w Bombaju",
+         "w Jerozolimie"
+      ],
+      "correctAnswer":"w Jerozolimie"
+   },
+   {
+      "question":"Jakie lotnictwo zaatakowało Pearl Harbor 7 grudnia 1941 roku? ",
+      "answers":[
+         "radzieckie",
+         "włoskie",
+         "japońskie",
+         "niemieckie"
+      ],
+      "correctAnswer":"japońskie"
+   },
+   {
+      "question":"W jakim kraju wynaleziono klocki Lego? ",
+      "answers":[
+         "w USA",
+         "w Danii",
+         "w Niemczech",
+         "na Węgrzech"
+      ],
+      "correctAnswer":"w Danii"
+   },
+   {
+      "question":"W jakim budynku gospodarczym Augiasz miał największy bałagan? ",
+      "answers":[
+         "w kurniku",
+         "w chlewni",
+         "w stodole",
+         "w stajni"
+      ],
+      "correctAnswer":"w stajni"
+   }
     ]
     }
