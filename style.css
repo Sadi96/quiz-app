@@ -72,6 +72,7 @@ span.result-info-span {
     margin: 2rem auto;
     border-radius: 0.2rem;
     padding: 1rem;
+    overflow-y: auto;
 }
 
 #quiz-box h1 {
@@ -98,13 +99,28 @@ div.answer-box {
     border-radius: 0.3rem;
 }
 
+<<<<<<< HEAD
+=======
 div.answer-box.game-started:hover {
-    font-weight: 600;
+    background-image: linear-gradient(to right top, #0076aa, #1789bf, #279dd4, #35b1ea, #42c6ff);
+    color: #fff;
     cursor: pointer;
 }
 
+
+>>>>>>> fc88c0608d4120ba37ce1baa6dd3697110c70910
 div.answer-box.checked {
     background-image: linear-gradient(to right top, #0076aa, #1789bf, #279dd4, #35b1ea, #42c6ff);
+    color: #fff;
+}
+
+div.answer-box.correct {
+    background-image: linear-gradient(to right top, #029421, #3caa21, #60c01e, #84d51a, #a8eb12);
+    color: #fff;
+}
+
+div.answer-box.wrong {
+    background-image: linear-gradient(to right top, #c20000, #d10000, #e00000, #ef0000, #ff0000);
     color: #fff;
 }
 
@@ -157,7 +173,7 @@ span.answer-letter {
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    height: 30%;
+    height: 40%;
     background-color: #fff;
     border: 1px solid #0076aa;
     border-radius: 0.2rem;
@@ -166,11 +182,54 @@ span.answer-letter {
     text-align: center;
 }
 
+/* SCROLLBAR STYLING */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 1px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0076aa;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #279dd4;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #279dd4;
+}
+
+::-webkit-scrollbar-track {
+    background: #aaa;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #aaa;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #aaa;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
 /* MEDIA QUERIES */
 @media (max-height: 480px) and (orientation: landscape) {
     #message-box-wrapper.visible #message-box {
         width: 70%;
-        height: 50%;
+        height: 60%;
     }
 }
 
@@ -280,5 +339,14 @@ span.answer-letter {
     #message-box-wrapper.visible #message-box {
         height: 200px;
         border-radius: 0.2rem;
+    }
+}
+
+/* MOBILE HOVER ISSUE REPAIR */
+@media (hover: hover) and (pointer: fine) {
+    div.answer-box.game-started:hover {
+        background-image: linear-gradient(to right top, #0076aa, #1789bf, #279dd4, #35b1ea, #42c6ff);
+        color: #fff;
+        cursor: pointer;
     }
 }

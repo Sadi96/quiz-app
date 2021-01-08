@@ -1,4 +1,4 @@
-// BAZA PYTAŃ
+// QUIZ DATA
 let quizData;
 fetch('quiz-data.json')
 .then(res => res.json())
@@ -7,7 +7,7 @@ fetch('quiz-data.json')
 })
 .catch(err => console.error(err));
 
-// ZMIENNE DOM
+// DOM VARIABLES
 const quizAppBox = document.getElementById('quiz-app');
 const correctAnswersSpan = document.getElementById('correct-counter');
 const wrongAnswersSpan = document.getElementById('wrong-counter');
@@ -23,101 +23,147 @@ const messageBox = document.getElementById('message-box-wrapper');
 const messageParagraph = document.getElementById('message-paragraph');
 const messageButton = document.getElementById('message-button');
 
-// ZMIENNE PRZECHOWUJĄCE DANE GRY
+// GAME DATA VARIABLES
 let allQuestionsInGame = 10;
 let correctAnswersCounter = 0;
 let wrongAnswersCounter = 0;
 let questionCounter = 1;
 let remainQuestionsCounter = allQuestionsInGame - 1;
 let currentRoundQuizData = '';
+let usedQuestionsIndexes = [];
 
-// FUNKCJE STERUJĄCE GRĄ
-// FUNKCJA ROZPOCZYNAJĄCE GRĘ OD NOWA
+// GAME CONTROL FUNCTIONS
+// "NEW GAME" FUNCTION
+function startNewGame() {
+   button.removeEventListener('click', startNewGame);
+   quizInitialization();
+}
+
+// "END OF GAME" FUNCTIONS
+function checkEndGame() {
+    if(questionCounter > allQuestionsInGame) {
+        return true;
+    } else {
+        false;
+    }
+}
+
+function hideQuizData() {
+    questionNumberSpan.textContent = '-';
+    remainingQuestionsSpan.textContent = '--';
+    answerSpans.forEach(span => span.textContent = '---')
+    questionParagraph.innerHTML = `Naciśnij przycisk na dole ekranu, aby rozpocząć grę`;
+    button.style.display = 'block';
+    button.textContent = 'Zacznij nową grę';
+    button.addEventListener('click', startNewGame);
+}
+
 function clearVariables() {
     correctAnswersCounter = 0;
     wrongAnswersCounter = 0;
     questionCounter = 1;
     remainQuestionsCounter = allQuestionsInGame - 1;
     currentRoundQuizData = '';
+    usedQuestionsIndexes.length = 0;
 }
 
-function startNewGame() {
-   clearVariables();
-   button.removeEventListener('click', startNewGame);
-   quizInitialization();
+function closeResultsInfo() {
+    quizAppBox.classList.remove('blurred');
+    messageBox.classList.remove('visible');
+    messageParagraph.innerHTML = ``;
+    clearVariables();
+    displayAnswersCounters();
+    messageButton.removeEventListener('click', closeResultsInfo);
 }
 
-// KONIEC GRY
-function displayGameResults() {
-    questionNumberSpan.textContent = '-';
-    remainingQuestionsSpan.textContent = '--';
-    answerSpans.forEach(span => span.textContent = '---')
-    questionParagraph.innerHTML = `Koniec gry! Twój wynik to: <br />
-    Prawidłowo: ${correctAnswersCounter}<br/>
-    Nieprawidłowo: ${wrongAnswersCounter}`;
-    button.textContent = 'Zacznij nową grę';
-    button.addEventListener('click', startNewGame);
+function displayResultsInfo() {
+    quizAppBox.classList.add('blurred');
+    messageBox.classList.add('visible');
+    messageParagraph.innerHTML =
+    `Koniec gry! <br /><br />
+    Twój wynik to: <br />
+    ${correctAnswersCounter} prawidłowych <br />
+    ${wrongAnswersCounter} nieprawidłowych
+    `;
+    messageButton.addEventListener('click', closeResultsInfo);
 }
 
 function endGame() {
-    displayGameResults();
+    clearAnswerBoxesBackground();
+    hideQuizData();
+    displayResultsInfo();
 }
 
-// FUNKCJE NA KOLEJNE RUNDY
+// "NEXT ROUNDS" FUNCTIONS
 function startNextRound() {
-    changeButtonText();
+    updateCounters()
+    if(checkEndGame()) {
+        return endGame()
+    }
+    clearAnswerBoxesBackground();
+    displayCurrentCounters();
     const quizData = drawQuizData();
     displayQuizData(quizData);
     addHoverToButtons();
-    answerBoxes.forEach(box => box.addEventListener('click', chooseAnswer));
-    button.addEventListener('click', sendAnswerWrapper);
+    answerBoxes.forEach(box => box.addEventListener('click', sendAnswerWrapper));
 }
 
 function removeHoverFromButtons() {
     answerBoxes.forEach(box => {
         box.classList.remove('game-started');
-        box.classList.remove('checked');
     })
 }
 
-function clearGameActivity() {
-    button.removeEventListener('click', sendAnswerWrapper);
-    answerBoxes.forEach(box => box.removeEventListener('click', chooseAnswer));
-    removeHoverFromButtons();
+function clearAnswerBoxesBackground() {
+    answerBoxes.forEach(box => {
+        box.classList.remove('correct');
+        box.classList.remove('wrong');
+        box.classList.remove('checked');
+    })
 }
 
 function updateCounters() {
     questionCounter++;
     remainQuestionsCounter--;
-    if(questionCounter > allQuestionsInGame) {
-        endGame();
-    } else {
-        displayCurrentCounters();
-        startNextRound();
-    }
 }
 
-// FUNKCJE INICJALIZUJĄCE
+// INITIALIZING FUNCTIONS
 function addHoverToButtons() {
     answerBoxes.forEach(box => {
         box.classList.add('game-started');
     })
 }
 
-function changeButtonText() {
-    button.textContent = 'Wybierz odpowiedź'
+function hideButton() {
+    button.style.display = 'none';
 }
 
-function displayCurrentCounters() {
+function displayAnswersCounters() {
     correctAnswersSpan.textContent = correctAnswersCounter;
     wrongAnswersSpan.textContent = wrongAnswersCounter;
+}
+
+function displayQuestionCounters() {
     questionNumberSpan.textContent = questionCounter;
     remainingQuestionsSpan.textContent = remainQuestionsCounter;
 }
 
+function displayCurrentCounters() {
+    displayAnswersCounters();
+    displayQuestionCounters();
+}
+
 function drawQuizData() {
-    const index = Math.floor(Math.random() * quizData.length);
-    return quizData[index];
+    let index = Math.floor(Math.random() * quizData.length);
+    if(usedQuestionsIndexes.length === quizData.length) {
+        throw new Error('There is no more available questions in database')
+    }
+    else if(usedQuestionsIndexes.includes(index)) {
+        return drawQuizData();
+    } else if(!usedQuestionsIndexes.includes(index)) {
+        usedQuestionsIndexes.push(index);
+        return quizData[index];
+    }
 }
 
 function displayQuizData(quizData) {
@@ -126,12 +172,6 @@ function displayQuizData(quizData) {
     answerSpans.forEach((span, index) => {
         span.textContent = quizData.answers[index]
     })
-}
-
-function chooseAnswer() {
-    answerBoxes.forEach(box => box.classList.remove('checked'));
-    this.classList.add('checked');
-    button.textContent = 'Zatwierdź';
 }
 
 function hideMessage() {
@@ -148,36 +188,52 @@ function displayMessage(message) {
     messageButton.addEventListener('click', hideMessage);
 }
 
+function correctAnswerAlert() {
+    const choosenAnswer = answerBoxes.filter(box => box.classList.contains('checked'))[0];
+    choosenAnswer.classList.remove('checked');
+    choosenAnswer.classList.add('correct');
+    correctAnswersCounter++;
+    displayCurrentCounters();
+    setTimeout(startNextRound, 1000)
+}
+
+function wrongAnswerAlert() {
+    const choosenAnswer = answerBoxes.filter(box => box.classList.contains('checked'))[0];
+    const correctAnswer = answerBoxes.filter(box => box.querySelector('.answer').textContent === currentRoundQuizData.correctAnswer)[0];
+    choosenAnswer.classList.remove('checked');
+    choosenAnswer.classList.add('wrong');
+    setTimeout(() => {
+        correctAnswer.classList.add('correct');
+    }, 1000)
+    wrongAnswersCounter++;
+    displayCurrentCounters();
+    setTimeout(startNextRound, 2000)
+}
+
 function sendAnswer(quizData) {
-    let choosenAnswer = answerBoxes.filter(box => box.classList.contains('checked'));
-        if(!choosenAnswer.length) {
-            return displayMessage('Najpierw zaznacz odpowiedź');
-        } else if (choosenAnswer[0].querySelector('.answer').textContent === quizData.correctAnswer) {
-            displayMessage(`${choosenAnswer[0].querySelector('.answer').textContent} to dobra odpowiedź!`);
-            correctAnswersCounter++;
-            displayCurrentCounters();
-        } else if (choosenAnswer[0].querySelector('.answer').textContent !== quizData.correctAnswer) {
-            displayMessage(`${choosenAnswer[0].querySelector('.answer').textContent} to nieprawidłowa odpowiedź!`)
-            wrongAnswersCounter++;
-            displayCurrentCounters();
-        }
-        clearGameActivity();
-        updateCounters();
+    this.classList.add('checked');
+    removeHoverFromButtons();
+    answerBoxes.forEach(box => box.removeEventListener('click', sendAnswerWrapper))
+    const choosenAnswer = this.querySelector('.answer').textContent;
+    if(choosenAnswer === quizData.correctAnswer) {
+        setTimeout(correctAnswerAlert, 2000)
+    } else if (choosenAnswer !== quizData.correctAnswer) {
+        setTimeout(wrongAnswerAlert, 2000)
+    }
 }
 
 function sendAnswerWrapper() {
-    sendAnswer(currentRoundQuizData)
+    sendAnswer.bind(this)(currentRoundQuizData)
 }
 
 function quizInitialization() {
     button.removeEventListener('click', quizInitialization);
     addHoverToButtons();
-    changeButtonText();
+    hideButton();
     displayCurrentCounters();
     const quizData = drawQuizData();
     displayQuizData(quizData);
-    answerBoxes.forEach(box => box.addEventListener('click', chooseAnswer));
-    button.addEventListener('click', sendAnswerWrapper);
+    answerBoxes.forEach(box => box.addEventListener('click', sendAnswerWrapper));
 }
 
 // EVENT LISTENERS
