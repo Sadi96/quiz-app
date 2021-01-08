@@ -99,16 +99,6 @@ div.answer-box {
     border-radius: 0.3rem;
 }
 
-<<<<<<< HEAD
-=======
-div.answer-box.game-started:hover {
-    background-image: linear-gradient(to right top, #0076aa, #1789bf, #279dd4, #35b1ea, #42c6ff);
-    color: #fff;
-    cursor: pointer;
-}
-
-
->>>>>>> fc88c0608d4120ba37ce1baa6dd3697110c70910
 div.answer-box.checked {
     background-image: linear-gradient(to right top, #0076aa, #1789bf, #279dd4, #35b1ea, #42c6ff);
     color: #fff;
