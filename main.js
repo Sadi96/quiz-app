@@ -25,12 +25,17 @@ const messageButton = document.getElementById('message-button');
 
 // GAME DATA VARIABLES
 let allQuestionsInGame = 10;
+let timerMinutesAmount = 0;
+let timerSecondsAmount = 10;
 let correctAnswersCounter = 0;
 let wrongAnswersCounter = 0;
 let questionCounter = 1;
 let remainQuestionsCounter = allQuestionsInGame - 1;
 let currentRoundQuizData = '';
 let usedQuestionsIndexes = [];
+let timerMinutesCounter = timerMinutesAmount;
+let timerSecondsCounter = timerSecondsAmount;
+let timerIntervalFunctionId = '';
 
 // GAME CONTROL FUNCTIONS
 // "NEW GAME" FUNCTION
@@ -51,7 +56,9 @@ function checkEndGame() {
 function hideQuizData() {
     questionNumberSpan.textContent = '-';
     remainingQuestionsSpan.textContent = '--';
-    answerSpans.forEach(span => span.textContent = '---')
+    answerSpans.forEach(span => span.textContent = '---');
+    minutesCounter.textContent = '--';
+    secondsCounter.textContent = '--';
     questionParagraph.innerHTML = `Naciśnij przycisk na dole ekranu, aby rozpocząć grę`;
     button.style.display = 'block';
     button.textContent = 'Zacznij nową grę';
@@ -89,9 +96,11 @@ function displayResultsInfo() {
 }
 
 function endGame() {
+    answerBoxes.forEach(box => box.removeEventListener('click', sendAnswerWrapper));
     clearAnswerBoxesBackground();
     hideQuizData();
     displayResultsInfo();
+    removeHoverFromButtons();
 }
 
 // "NEXT ROUNDS" FUNCTIONS
@@ -106,6 +115,7 @@ function startNextRound() {
     displayQuizData(quizData);
     addHoverToButtons();
     answerBoxes.forEach(box => box.addEventListener('click', sendAnswerWrapper));
+    timerIntervalFunctionId = setInterval(countTime, 1000);
 }
 
 function removeHoverFromButtons() {
@@ -138,17 +148,8 @@ function hideButton() {
     button.style.display = 'none';
 }
 
-function displayAnswersCounters() {
-    correctAnswersSpan.textContent = correctAnswersCounter;
-    wrongAnswersSpan.textContent = wrongAnswersCounter;
-}
-
-function displayQuestionCounters() {
-    questionNumberSpan.textContent = questionCounter;
-    remainingQuestionsSpan.textContent = remainQuestionsCounter;
-}
-
 function displayCurrentCounters() {
+    displayCurrectTimer();
     displayAnswersCounters();
     displayQuestionCounters();
 }
@@ -174,11 +175,27 @@ function displayQuizData(quizData) {
     })
 }
 
+function displayCurrectTimer() {
+    minutesCounter.textContent = timerMinutesCounter < 10 ? `0${timerMinutesCounter}` : timerMinutesCounter;
+    secondsCounter.textContent = timerSecondsCounter < 10 ? `0${timerSecondsCounter}` : timerSecondsCounter;
+}
+
+function displayAnswersCounters() {
+    correctAnswersSpan.textContent = correctAnswersCounter;
+    wrongAnswersSpan.textContent = wrongAnswersCounter;
+}
+
+function displayQuestionCounters() {
+    questionNumberSpan.textContent = questionCounter;
+    remainingQuestionsSpan.textContent = remainQuestionsCounter;
+}
+
 function hideMessage() {
     quizAppBox.classList.remove('blurred');
     messageBox.classList.remove('visible');
     messageParagraph.textContent = '';
     messageButton.removeEventListener('click', hideMessage);
+    startNextRound();
 }
 
 function displayMessage(message) {
@@ -213,6 +230,8 @@ function wrongAnswerAlert() {
 function sendAnswer(quizData) {
     this.classList.add('checked');
     removeHoverFromButtons();
+    clearInterval(timerIntervalFunctionId);
+    resetTimer();
     answerBoxes.forEach(box => box.removeEventListener('click', sendAnswerWrapper))
     const choosenAnswer = this.querySelector('.answer').textContent;
     if(choosenAnswer === quizData.correctAnswer) {
@@ -226,6 +245,27 @@ function sendAnswerWrapper() {
     sendAnswer.bind(this)(currentRoundQuizData)
 }
 
+function resetTimer() {
+    timerSecondsCounter = timerSecondsAmount;
+}
+
+function timedOut() {
+    clearInterval(timerIntervalFunctionId);
+    wrongAnswersCounter++;
+    displayAnswersCounters();
+    answerBoxes.forEach(box => box.classList.add('wrong'));
+    resetTimer()
+    setTimeout(() => displayMessage('Czas minął!'), 1000);
+}
+
+function countTime() {
+timerSecondsCounter--;
+displayCurrentCounters();
+if(timerSecondsCounter === 0) {
+    return timedOut();
+}
+}
+
 function quizInitialization() {
     button.removeEventListener('click', quizInitialization);
     addHoverToButtons();
@@ -234,6 +274,7 @@ function quizInitialization() {
     const quizData = drawQuizData();
     displayQuizData(quizData);
     answerBoxes.forEach(box => box.addEventListener('click', sendAnswerWrapper));
+    timerIntervalFunctionId = setInterval(countTime, 1000);
 }
 
 // EVENT LISTENERS

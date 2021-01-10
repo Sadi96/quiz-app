@@ -97,6 +97,7 @@ div.answer-box {
     align-items: center;
     padding: 1rem 0.5rem;
     border-radius: 0.3rem;
+    margin: 0.1rem auto;
 }
 
 div.answer-box.checked {
@@ -163,13 +164,17 @@ span.answer-letter {
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    height: 40%;
+    max-height: 40%;
     background-color: #fff;
     border: 1px solid #0076aa;
     border-radius: 0.2rem;
-    padding: 2rem 1rem;
+    padding: 1rem;
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 1);
     text-align: center;
+}
+
+#message-paragraph {
+    margin-bottom: 2rem;
 }
 
 /* SCROLLBAR STYLING */
@@ -219,13 +224,13 @@ span.answer-letter {
 @media (max-height: 480px) and (orientation: landscape) {
     #message-box-wrapper.visible #message-box {
         width: 70%;
-        height: 60%;
+        max-height: 60%;
     }
 }
 
 @media (max-width: 360px) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
@@ -273,7 +278,7 @@ span.answer-letter {
 
     #message-box-wrapper.visible #message-box {
         width: 45%;
-        height: 40%;
+        max-height: 40%;
         padding: 3rem 2rem;
     }
 }
@@ -305,7 +310,7 @@ span.answer-letter {
 
     #message-box-wrapper.visible #message-box {
         width: 45%;
-        height: 30%;
+        max-height: 30%;
         padding: 3rem 2rem;
     }
 }
@@ -327,7 +332,7 @@ span.answer-letter {
     }
 
     #message-box-wrapper.visible #message-box {
-        height: 200px;
+        max-height: 300px;
         border-radius: 0.2rem;
     }
 }
