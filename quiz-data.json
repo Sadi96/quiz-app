@@ -1158,7 +1158,7 @@
       "correctAnswer":"w stajni"
    },{
       "question":"W skład jakiego środka stosowanego w gospodarstwie domowym wchodzi chlor? ",
-      "answer":[
+      "answers":[
          "płynu do kąpieli ",
          "szamponu ",
          "pasty do zębów ",
@@ -1168,7 +1168,7 @@
    },
    {
       "question":"Chrześcijańska nazwa Stambułu to: ",
-      "answer":[
+      "answers":[
          "Konstantynopo",
          "Aleksandretta ",
          "Nikomedia ",
@@ -1178,7 +1178,7 @@
    },
    {
       "question":"Flanka to w terminologii wojskowej: ",
-      "answer":[
+      "answers":[
          "czoło ",
          "awangarda ",
          "skrzydł",
@@ -1188,7 +1188,7 @@
    },
    {
       "question":"Kalendarz juliański wprowadził: ",
-      "answer":[
+      "answers":[
          "Ceza",
          "Pompejusz ",
          "Neron ",
@@ -1198,7 +1198,7 @@
    },
    {
       "question":"Ile watów liczy kilowat? ",
-      "answer":[
+      "answers":[
          "10",
          "100",
          "1000",
@@ -1208,7 +1208,7 @@
    },
    {
       "question":"Żydowski nagrobek to: ",
-      "answer":[
+      "answers":[
          "dolmen",
          "macewa",
          "mastaba",
@@ -1218,7 +1218,7 @@
    },
    {
       "question":"Motocross to wyścig: ",
-      "answer":[
+      "answers":[
          "samochodowy",
          "motocyklowy",
          "motorowodny",
@@ -1228,7 +1228,7 @@
    },
    {
       "question":"Pseudonim utworzony przez napisanie nazwiska autora na odwrót, np. Kynsa – Asnyk, to: ",
-      "answer":[
+      "answers":[
          "ananim",
          "homonim",
          "antonim",
@@ -1238,7 +1238,7 @@
    },
    {
       "question":"Andrzej Grubba to wielokrotny medalista: ",
-      "answer":[
+      "answers":[
          "w siatkówce",
          "w badmintonie",
          "w tenisie stołowym",
@@ -1248,7 +1248,7 @@
    },
    {
       "question":"Do jakiego morza wpływa rzeka Dunaj? ",
-      "answer":[
+      "answers":[
          "do Morza Białego",
          "do Morza Żółtego",
          "do Morza Czarnego",
@@ -1258,7 +1258,7 @@
    },
    {
       "question":"Wędzisko jest częścią: ",
-      "answer":[
+      "answers":[
          "wędki",
          "uzdy",
          "kagańca",
@@ -1268,7 +1268,7 @@
    },
    {
       "question":"Amerykańska ambasador przy ONZ i pierwsza kobieta na stanowisku sekretarza stanu w USA to: ",
-      "answer":[
+      "answers":[
          "Hillary Clinton",
          "Madeleine Albright",
          "Rosalind Franklin",
@@ -1278,7 +1278,7 @@
    },
    {
       "question":"Zamiar wyprzedzania (względnie: omijania) w pojeździe mechanicznym sygnalizowany jest: ",
-      "answer":[
+      "answers":[
          "światłami stopu",
          "światłami postojowymi",
          "kierunkowskazem",
@@ -1288,7 +1288,7 @@
    },
    {
       "question":"Ile prac musiał wykonać Herakles w służbie u Eurysteusza? ",
-      "answer":[
+      "answers":[
          "5",
          "9",
          "12",
@@ -1298,7 +1298,7 @@
    },
    {
       "question":"Przełożona żeńskiej służby na dworze królewskim to: ",
-      "answer":[
+      "answers":[
          "ochmistrzyni",
          "kuchenna",
          "gospodyni",
@@ -1308,7 +1308,7 @@
    },
    {
       "question":"Antonio Vivaldi był nazywany „czerwonym księdzem” ze względu na jego: ",
-      "answer":[
+      "answers":[
          "lewicowe poglądy",
          "sympatię do Indian",
          "purpurowe stroje",
@@ -1318,7 +1318,7 @@
    },
    {
       "question":"Na jakim kontynencie znajduje się Patagonia? ",
-      "answer":[
+      "answers":[
          "w Ameryce Północnej",
          "w Ameryce Południowej",
          "w Afryce",
@@ -1328,7 +1328,7 @@
    },
    {
       "question":"Papierem wartościowym, upoważniającym do stałego i z góry określonego dochodu, jest: ",
-      "answer":[
+      "answers":[
          "akcja",
          "weksel in blanco",
          "dywidenda",
@@ -1338,7 +1338,7 @@
    },
    {
       "question":"Do naczelnych nie należą: ",
-      "answer":[
+      "answers":[
          "lemurowate",
          "wyraki",
          "małpy wąskonose",
@@ -1348,7 +1348,7 @@
    },
    {
       "question":"Do jakiego gatunku należą filmy pt. „Amityville”, „Halloween”, czy „Koszmar z ulicy Wiązów”? ",
-      "answer":[
+      "answers":[
          "do komedii",
          "do horroru",
          "do melodramatu",
@@ -1358,7 +1358,7 @@
    },
    {
       "question":"Kazik Staszewski w piosence Kultu śpiewa, że „gdy nie ma dzieci, to jesteśmy...” : ",
-      "answer":[
+      "answers":[
          "niegrzeczni",
          "niespokojni",
          "leniwi",
@@ -1368,7 +1368,7 @@
    },
    {
       "question":"Konkurs Czterech Skoczni to zawody organizowane w skokach: ",
-      "answer":[
+      "answers":[
          "narciarskich",
          "do wody",
          "o tyczce",
@@ -1378,7 +1378,7 @@
    },
    {
       "question":"Kreon skazał Antygonę na: ",
-      "answer":[
+      "answers":[
          "ścięcie",
          "zamurowanie żywcem",
          "powieszenie",
@@ -1388,7 +1388,7 @@
    },
    {
       "question":"Dzielnica Nowego Jorku, w obrębie której znajduje się Wall Street to: ",
-      "answer":[
+      "answers":[
          "Richmond",
          "Queens",
          "Brooklyn",
