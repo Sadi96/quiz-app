@@ -1159,42 +1159,42 @@
    },{
       "question":"W skład jakiego środka stosowanego w gospodarstwie domowym wchodzi chlor? ",
       "answers":[
-         "płynu do kąpieli ",
-         "szamponu ",
-         "pasty do zębów ",
+         "płynu do kąpieli",
+         "szamponu",
+         "pasty do zębów",
          "wybielacza do tkanin"
       ],
-      "correctAnswer":"D"
+      "correctAnswer":"wybielacza do tkanin"
    },
    {
       "question":"Chrześcijańska nazwa Stambułu to: ",
       "answers":[
-         "Konstantynopo",
-         "Aleksandretta ",
-         "Nikomedia ",
-         "Synopa "
+         "Konstantynopol",
+         "Aleksandretta",
+         "Nikomedia",
+         "Synopa"
       ],
-      "correctAnswer":"A"
+      "correctAnswer":"Konstantynopol"
    },
    {
       "question":"Flanka to w terminologii wojskowej: ",
       "answers":[
-         "czoło ",
-         "awangarda ",
-         "skrzydł",
-         "centrum "
+         "czoło",
+         "awangarda",
+         "skrzydło",
+         "centrum"
       ],
-      "correctAnswer":"C"
+      "correctAnswer":"skrzydło"
    },
    {
       "question":"Kalendarz juliański wprowadził: ",
       "answers":[
-         "Ceza",
-         "Pompejusz ",
-         "Neron ",
-         "Dioklecjan "
+         "Cezar",
+         "Pompejusz",
+         "Neron",
+         "Dioklecjan"
       ],
-      "correctAnswer":"A"
+      "correctAnswer":"Cezar"
    },
    {
       "question":"Ile watów liczy kilowat? ",
